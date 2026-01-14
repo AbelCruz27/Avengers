@@ -1,14 +1,50 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  output   = "./generated/client"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+// ============================================
+// User & Authentication Models
+// ============================================
+
+model User {
+  id            String        @id @default(cuid())
+  email         String        @unique
+  passwordHash  String
+  role          UserRole      @default(PHOTOGRAPHER)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  photographer  Photographer?
+
+  @@map("users")
+}
+
+model Photographer {
+  id           String   @id @default(cuid())
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  subdomain    String   @unique
+  businessName String
+  phone        String?
+  bio          String?
+  avatarUrl    String?
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([subdomain])
+  @@map("photographers")
+}
+
+enum UserRole {
+  PHOTOGRAPHER
+  CLIENT
+  ADMIN
 }
