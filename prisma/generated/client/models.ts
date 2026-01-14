@@ -10,4 +10,11 @@
  */
 export type * from './models/User'
 export type * from './models/Photographer'
+export type * from './models/SessionType'
+export type * from './models/Availability'
+export type * from './models/BlockedDate'
+export type * from './models/Booking'
+export type * from './models/Payment'
+export type * from './models/Gallery'
+export type * from './models/Photo'
 export type * from './commonInputTypes'

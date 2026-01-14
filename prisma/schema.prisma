@@ -22,6 +22,7 @@ model User {
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
   photographer  Photographer?
+  bookings      Booking[]     @relation("ClientBookings")
 
   @@map("users")
 }
@@ -35,9 +36,18 @@ model Photographer {
   phone        String?
   bio          String?
   avatarUrl    String?
+  coverUrl     String?
+  logoUrl      String?
+  primaryColor String?  @default("#8B5CF6")
   isActive     Boolean  @default(true)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+  
+  // Relations
+  sessionTypes  SessionType[]
+  availabilities Availability[]
+  bookings      Booking[]
+  galleries     Gallery[]
 
   @@index([subdomain])
   @@map("photographers")
@@ -47,4 +57,171 @@ enum UserRole {
   PHOTOGRAPHER
   CLIENT
   ADMIN
+}
+
+// ============================================
+// Session Types & Availability
+// ============================================
+
+model SessionType {
+  id             String   @id @default(cuid())
+  photographerId String
+  photographer   Photographer @relation(fields: [photographerId], references: [id], onDelete: Cascade)
+  name           String       // e.g., "Sesión de Retrato", "Boda"
+  description    String?
+  duration       Int          // Duration in minutes
+  price          Decimal      @db.Decimal(10, 2)
+  depositPercent Int          @default(50) // Percentage required upfront
+  isActive       Boolean      @default(true)
+  color          String?      @default("#8B5CF6") // For calendar display
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  
+  bookings       Booking[]
+
+  @@map("session_types")
+}
+
+model Availability {
+  id             String   @id @default(cuid())
+  photographerId String
+  photographer   Photographer @relation(fields: [photographerId], references: [id], onDelete: Cascade)
+  dayOfWeek      Int          // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+  startTime      String       // e.g., "09:00"
+  endTime        String       // e.g., "18:00"
+  isActive       Boolean      @default(true)
+  
+  @@unique([photographerId, dayOfWeek])
+  @@map("availability")
+}
+
+model BlockedDate {
+  id             String   @id @default(cuid())
+  photographerId String
+  date           DateTime @db.Date
+  reason         String?
+  
+  @@unique([photographerId, date])
+  @@map("blocked_dates")
+}
+
+// ============================================
+// Bookings & Payments
+// ============================================
+
+model Booking {
+  id              String   @id @default(cuid())
+  photographerId  String
+  photographer    Photographer @relation(fields: [photographerId], references: [id], onDelete: Cascade)
+  sessionTypeId   String
+  sessionType     SessionType @relation(fields: [sessionTypeId], references: [id])
+  clientId        String?
+  client          User?    @relation("ClientBookings", fields: [clientId], references: [id])
+  
+  // Client info (for guest bookings)
+  clientName      String
+  clientEmail     String
+  clientPhone     String?
+  
+  // Booking details
+  date            DateTime @db.Date
+  startTime       String   // e.g., "10:00"
+  endTime         String   // e.g., "12:00"
+  notes           String?
+  
+  // Status
+  status          BookingStatus @default(PENDING)
+  
+  // Payment info
+  totalAmount     Decimal  @db.Decimal(10, 2)
+  depositAmount   Decimal  @db.Decimal(10, 2)
+  depositPaid     Boolean  @default(false)
+  fullyPaid       Boolean  @default(false)
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  payments        Payment[]
+  gallery         Gallery?
+
+  @@index([photographerId, date])
+  @@index([status])
+  @@map("bookings")
+}
+
+enum BookingStatus {
+  PENDING      // Awaiting payment
+  CONFIRMED    // Deposit paid
+  COMPLETED    // Session done
+  CANCELLED    // Cancelled
+  NO_SHOW      // Client didn't show up
+}
+
+model Payment {
+  id            String   @id @default(cuid())
+  bookingId     String
+  booking       Booking  @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  amount        Decimal  @db.Decimal(10, 2)
+  type          PaymentType
+  status        PaymentStatus @default(PENDING)
+  provider      String?      // "stripe" or "paypal"
+  providerId    String?      // External payment ID
+  receiptUrl    String?
+  createdAt     DateTime @default(now())
+  
+  @@map("payments")
+}
+
+enum PaymentType {
+  DEPOSIT
+  FULL_PAYMENT
+  REMAINING
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+// ============================================
+// Galleries
+// ============================================
+
+model Gallery {
+  id             String   @id @default(cuid())
+  photographerId String
+  photographer   Photographer @relation(fields: [photographerId], references: [id], onDelete: Cascade)
+  bookingId      String?  @unique
+  booking        Booking? @relation(fields: [bookingId], references: [id])
+  
+  title          String
+  slug           String       // URL-friendly identifier
+  description    String?
+  password       String?      // Optional password protection
+  expiresAt      DateTime?    // Optional expiration
+  isPublic       Boolean      @default(false)
+  
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  
+  photos         Photo[]
+
+  @@unique([photographerId, slug])
+  @@map("galleries")
+}
+
+model Photo {
+  id         String   @id @default(cuid())
+  galleryId  String
+  gallery    Gallery  @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+  url        String
+  thumbnailUrl String?
+  filename   String
+  size       Int      // in bytes
+  order      Int      @default(0)
+  createdAt  DateTime @default(now())
+
+  @@map("photos")
 }

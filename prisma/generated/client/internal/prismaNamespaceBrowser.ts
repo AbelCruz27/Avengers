@@ -52,7 +52,14 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
-  Photographer: 'Photographer'
+  Photographer: 'Photographer',
+  SessionType: 'SessionType',
+  Availability: 'Availability',
+  BlockedDate: 'BlockedDate',
+  Booking: 'Booking',
+  Payment: 'Payment',
+  Gallery: 'Gallery',
+  Photo: 'Photo'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -91,12 +98,124 @@ export const PhotographerScalarFieldEnum = {
   phone: 'phone',
   bio: 'bio',
   avatarUrl: 'avatarUrl',
+  coverUrl: 'coverUrl',
+  logoUrl: 'logoUrl',
+  primaryColor: 'primaryColor',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type PhotographerScalarFieldEnum = (typeof PhotographerScalarFieldEnum)[keyof typeof PhotographerScalarFieldEnum]
+
+
+export const SessionTypeScalarFieldEnum = {
+  id: 'id',
+  photographerId: 'photographerId',
+  name: 'name',
+  description: 'description',
+  duration: 'duration',
+  price: 'price',
+  depositPercent: 'depositPercent',
+  isActive: 'isActive',
+  color: 'color',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SessionTypeScalarFieldEnum = (typeof SessionTypeScalarFieldEnum)[keyof typeof SessionTypeScalarFieldEnum]
+
+
+export const AvailabilityScalarFieldEnum = {
+  id: 'id',
+  photographerId: 'photographerId',
+  dayOfWeek: 'dayOfWeek',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  isActive: 'isActive'
+} as const
+
+export type AvailabilityScalarFieldEnum = (typeof AvailabilityScalarFieldEnum)[keyof typeof AvailabilityScalarFieldEnum]
+
+
+export const BlockedDateScalarFieldEnum = {
+  id: 'id',
+  photographerId: 'photographerId',
+  date: 'date',
+  reason: 'reason'
+} as const
+
+export type BlockedDateScalarFieldEnum = (typeof BlockedDateScalarFieldEnum)[keyof typeof BlockedDateScalarFieldEnum]
+
+
+export const BookingScalarFieldEnum = {
+  id: 'id',
+  photographerId: 'photographerId',
+  sessionTypeId: 'sessionTypeId',
+  clientId: 'clientId',
+  clientName: 'clientName',
+  clientEmail: 'clientEmail',
+  clientPhone: 'clientPhone',
+  date: 'date',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  notes: 'notes',
+  status: 'status',
+  totalAmount: 'totalAmount',
+  depositAmount: 'depositAmount',
+  depositPaid: 'depositPaid',
+  fullyPaid: 'fullyPaid',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeof BookingScalarFieldEnum]
+
+
+export const PaymentScalarFieldEnum = {
+  id: 'id',
+  bookingId: 'bookingId',
+  amount: 'amount',
+  type: 'type',
+  status: 'status',
+  provider: 'provider',
+  providerId: 'providerId',
+  receiptUrl: 'receiptUrl',
+  createdAt: 'createdAt'
+} as const
+
+export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+
+
+export const GalleryScalarFieldEnum = {
+  id: 'id',
+  photographerId: 'photographerId',
+  bookingId: 'bookingId',
+  title: 'title',
+  slug: 'slug',
+  description: 'description',
+  password: 'password',
+  expiresAt: 'expiresAt',
+  isPublic: 'isPublic',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GalleryScalarFieldEnum = (typeof GalleryScalarFieldEnum)[keyof typeof GalleryScalarFieldEnum]
+
+
+export const PhotoScalarFieldEnum = {
+  id: 'id',
+  galleryId: 'galleryId',
+  url: 'url',
+  thumbnailUrl: 'thumbnailUrl',
+  filename: 'filename',
+  size: 'size',
+  order: 'order',
+  createdAt: 'createdAt'
+} as const
+
+export type PhotoScalarFieldEnum = (typeof PhotoScalarFieldEnum)[keyof typeof PhotoScalarFieldEnum]
 
 
 export const SortOrder = {

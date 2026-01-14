@@ -49,3 +49,38 @@ export type User = Prisma.UserModel
  * 
  */
 export type Photographer = Prisma.PhotographerModel
+/**
+ * Model SessionType
+ * 
+ */
+export type SessionType = Prisma.SessionTypeModel
+/**
+ * Model Availability
+ * 
+ */
+export type Availability = Prisma.AvailabilityModel
+/**
+ * Model BlockedDate
+ * 
+ */
+export type BlockedDate = Prisma.BlockedDateModel
+/**
+ * Model Booking
+ * 
+ */
+export type Booking = Prisma.BookingModel
+/**
+ * Model Payment
+ * 
+ */
+export type Payment = Prisma.PaymentModel
+/**
+ * Model Gallery
+ * 
+ */
+export type Gallery = Prisma.GalleryModel
+/**
+ * Model Photo
+ * 
+ */
+export type Photo = Prisma.PhotoModel

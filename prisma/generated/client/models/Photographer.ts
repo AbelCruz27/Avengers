@@ -32,6 +32,9 @@ export type PhotographerMinAggregateOutputType = {
   phone: string | null
   bio: string | null
   avatarUrl: string | null
+  coverUrl: string | null
+  logoUrl: string | null
+  primaryColor: string | null
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -45,6 +48,9 @@ export type PhotographerMaxAggregateOutputType = {
   phone: string | null
   bio: string | null
   avatarUrl: string | null
+  coverUrl: string | null
+  logoUrl: string | null
+  primaryColor: string | null
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -58,6 +64,9 @@ export type PhotographerCountAggregateOutputType = {
   phone: number
   bio: number
   avatarUrl: number
+  coverUrl: number
+  logoUrl: number
+  primaryColor: number
   isActive: number
   createdAt: number
   updatedAt: number
@@ -73,6 +82,9 @@ export type PhotographerMinAggregateInputType = {
   phone?: true
   bio?: true
   avatarUrl?: true
+  coverUrl?: true
+  logoUrl?: true
+  primaryColor?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
@@ -86,6 +98,9 @@ export type PhotographerMaxAggregateInputType = {
   phone?: true
   bio?: true
   avatarUrl?: true
+  coverUrl?: true
+  logoUrl?: true
+  primaryColor?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
@@ -99,6 +114,9 @@ export type PhotographerCountAggregateInputType = {
   phone?: true
   bio?: true
   avatarUrl?: true
+  coverUrl?: true
+  logoUrl?: true
+  primaryColor?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
@@ -185,6 +203,9 @@ export type PhotographerGroupByOutputType = {
   phone: string | null
   bio: string | null
   avatarUrl: string | null
+  coverUrl: string | null
+  logoUrl: string | null
+  primaryColor: string | null
   isActive: boolean
   createdAt: Date
   updatedAt: Date
@@ -219,10 +240,17 @@ export type PhotographerWhereInput = {
   phone?: Prisma.StringNullableFilter<"Photographer"> | string | null
   bio?: Prisma.StringNullableFilter<"Photographer"> | string | null
   avatarUrl?: Prisma.StringNullableFilter<"Photographer"> | string | null
+  coverUrl?: Prisma.StringNullableFilter<"Photographer"> | string | null
+  logoUrl?: Prisma.StringNullableFilter<"Photographer"> | string | null
+  primaryColor?: Prisma.StringNullableFilter<"Photographer"> | string | null
   isActive?: Prisma.BoolFilter<"Photographer"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Photographer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Photographer"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  sessionTypes?: Prisma.SessionTypeListRelationFilter
+  availabilities?: Prisma.AvailabilityListRelationFilter
+  bookings?: Prisma.BookingListRelationFilter
+  galleries?: Prisma.GalleryListRelationFilter
 }
 
 export type PhotographerOrderByWithRelationInput = {
@@ -233,10 +261,17 @@ export type PhotographerOrderByWithRelationInput = {
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  coverUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  primaryColor?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  sessionTypes?: Prisma.SessionTypeOrderByRelationAggregateInput
+  availabilities?: Prisma.AvailabilityOrderByRelationAggregateInput
+  bookings?: Prisma.BookingOrderByRelationAggregateInput
+  galleries?: Prisma.GalleryOrderByRelationAggregateInput
 }
 
 export type PhotographerWhereUniqueInput = Prisma.AtLeast<{
@@ -250,10 +285,17 @@ export type PhotographerWhereUniqueInput = Prisma.AtLeast<{
   phone?: Prisma.StringNullableFilter<"Photographer"> | string | null
   bio?: Prisma.StringNullableFilter<"Photographer"> | string | null
   avatarUrl?: Prisma.StringNullableFilter<"Photographer"> | string | null
+  coverUrl?: Prisma.StringNullableFilter<"Photographer"> | string | null
+  logoUrl?: Prisma.StringNullableFilter<"Photographer"> | string | null
+  primaryColor?: Prisma.StringNullableFilter<"Photographer"> | string | null
   isActive?: Prisma.BoolFilter<"Photographer"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Photographer"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Photographer"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  sessionTypes?: Prisma.SessionTypeListRelationFilter
+  availabilities?: Prisma.AvailabilityListRelationFilter
+  bookings?: Prisma.BookingListRelationFilter
+  galleries?: Prisma.GalleryListRelationFilter
 }, "id" | "userId" | "subdomain">
 
 export type PhotographerOrderByWithAggregationInput = {
@@ -264,6 +306,9 @@ export type PhotographerOrderByWithAggregationInput = {
   phone?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   avatarUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  coverUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  logoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  primaryColor?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -283,6 +328,9 @@ export type PhotographerScalarWhereWithAggregatesInput = {
   phone?: Prisma.StringNullableWithAggregatesFilter<"Photographer"> | string | null
   bio?: Prisma.StringNullableWithAggregatesFilter<"Photographer"> | string | null
   avatarUrl?: Prisma.StringNullableWithAggregatesFilter<"Photographer"> | string | null
+  coverUrl?: Prisma.StringNullableWithAggregatesFilter<"Photographer"> | string | null
+  logoUrl?: Prisma.StringNullableWithAggregatesFilter<"Photographer"> | string | null
+  primaryColor?: Prisma.StringNullableWithAggregatesFilter<"Photographer"> | string | null
   isActive?: Prisma.BoolWithAggregatesFilter<"Photographer"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Photographer"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Photographer"> | Date | string
@@ -295,10 +343,17 @@ export type PhotographerCreateInput = {
   phone?: string | null
   bio?: string | null
   avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutPhotographerInput
+  sessionTypes?: Prisma.SessionTypeCreateNestedManyWithoutPhotographerInput
+  availabilities?: Prisma.AvailabilityCreateNestedManyWithoutPhotographerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPhotographerInput
+  galleries?: Prisma.GalleryCreateNestedManyWithoutPhotographerInput
 }
 
 export type PhotographerUncheckedCreateInput = {
@@ -309,9 +364,16 @@ export type PhotographerUncheckedCreateInput = {
   phone?: string | null
   bio?: string | null
   avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  sessionTypes?: Prisma.SessionTypeUncheckedCreateNestedManyWithoutPhotographerInput
+  availabilities?: Prisma.AvailabilityUncheckedCreateNestedManyWithoutPhotographerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPhotographerInput
+  galleries?: Prisma.GalleryUncheckedCreateNestedManyWithoutPhotographerInput
 }
 
 export type PhotographerUpdateInput = {
@@ -321,10 +383,17 @@ export type PhotographerUpdateInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutPhotographerNestedInput
+  sessionTypes?: Prisma.SessionTypeUpdateManyWithoutPhotographerNestedInput
+  availabilities?: Prisma.AvailabilityUpdateManyWithoutPhotographerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPhotographerNestedInput
+  galleries?: Prisma.GalleryUpdateManyWithoutPhotographerNestedInput
 }
 
 export type PhotographerUncheckedUpdateInput = {
@@ -335,9 +404,16 @@ export type PhotographerUncheckedUpdateInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionTypes?: Prisma.SessionTypeUncheckedUpdateManyWithoutPhotographerNestedInput
+  availabilities?: Prisma.AvailabilityUncheckedUpdateManyWithoutPhotographerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPhotographerNestedInput
+  galleries?: Prisma.GalleryUncheckedUpdateManyWithoutPhotographerNestedInput
 }
 
 export type PhotographerCreateManyInput = {
@@ -348,6 +424,9 @@ export type PhotographerCreateManyInput = {
   phone?: string | null
   bio?: string | null
   avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -360,6 +439,9 @@ export type PhotographerUpdateManyMutationInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -373,6 +455,9 @@ export type PhotographerUncheckedUpdateManyInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -391,6 +476,9 @@ export type PhotographerCountOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
+  coverUrl?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  primaryColor?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -404,6 +492,9 @@ export type PhotographerMaxOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
+  coverUrl?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  primaryColor?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -417,9 +508,17 @@ export type PhotographerMinOrderByAggregateInput = {
   phone?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   avatarUrl?: Prisma.SortOrder
+  coverUrl?: Prisma.SortOrder
+  logoUrl?: Prisma.SortOrder
+  primaryColor?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type PhotographerScalarRelationFilter = {
+  is?: Prisma.PhotographerWhereInput
+  isNot?: Prisma.PhotographerWhereInput
 }
 
 export type PhotographerCreateNestedOneWithoutUserInput = {
@@ -462,6 +561,62 @@ export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
+export type PhotographerCreateNestedOneWithoutSessionTypesInput = {
+  create?: Prisma.XOR<Prisma.PhotographerCreateWithoutSessionTypesInput, Prisma.PhotographerUncheckedCreateWithoutSessionTypesInput>
+  connectOrCreate?: Prisma.PhotographerCreateOrConnectWithoutSessionTypesInput
+  connect?: Prisma.PhotographerWhereUniqueInput
+}
+
+export type PhotographerUpdateOneRequiredWithoutSessionTypesNestedInput = {
+  create?: Prisma.XOR<Prisma.PhotographerCreateWithoutSessionTypesInput, Prisma.PhotographerUncheckedCreateWithoutSessionTypesInput>
+  connectOrCreate?: Prisma.PhotographerCreateOrConnectWithoutSessionTypesInput
+  upsert?: Prisma.PhotographerUpsertWithoutSessionTypesInput
+  connect?: Prisma.PhotographerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PhotographerUpdateToOneWithWhereWithoutSessionTypesInput, Prisma.PhotographerUpdateWithoutSessionTypesInput>, Prisma.PhotographerUncheckedUpdateWithoutSessionTypesInput>
+}
+
+export type PhotographerCreateNestedOneWithoutAvailabilitiesInput = {
+  create?: Prisma.XOR<Prisma.PhotographerCreateWithoutAvailabilitiesInput, Prisma.PhotographerUncheckedCreateWithoutAvailabilitiesInput>
+  connectOrCreate?: Prisma.PhotographerCreateOrConnectWithoutAvailabilitiesInput
+  connect?: Prisma.PhotographerWhereUniqueInput
+}
+
+export type PhotographerUpdateOneRequiredWithoutAvailabilitiesNestedInput = {
+  create?: Prisma.XOR<Prisma.PhotographerCreateWithoutAvailabilitiesInput, Prisma.PhotographerUncheckedCreateWithoutAvailabilitiesInput>
+  connectOrCreate?: Prisma.PhotographerCreateOrConnectWithoutAvailabilitiesInput
+  upsert?: Prisma.PhotographerUpsertWithoutAvailabilitiesInput
+  connect?: Prisma.PhotographerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PhotographerUpdateToOneWithWhereWithoutAvailabilitiesInput, Prisma.PhotographerUpdateWithoutAvailabilitiesInput>, Prisma.PhotographerUncheckedUpdateWithoutAvailabilitiesInput>
+}
+
+export type PhotographerCreateNestedOneWithoutBookingsInput = {
+  create?: Prisma.XOR<Prisma.PhotographerCreateWithoutBookingsInput, Prisma.PhotographerUncheckedCreateWithoutBookingsInput>
+  connectOrCreate?: Prisma.PhotographerCreateOrConnectWithoutBookingsInput
+  connect?: Prisma.PhotographerWhereUniqueInput
+}
+
+export type PhotographerUpdateOneRequiredWithoutBookingsNestedInput = {
+  create?: Prisma.XOR<Prisma.PhotographerCreateWithoutBookingsInput, Prisma.PhotographerUncheckedCreateWithoutBookingsInput>
+  connectOrCreate?: Prisma.PhotographerCreateOrConnectWithoutBookingsInput
+  upsert?: Prisma.PhotographerUpsertWithoutBookingsInput
+  connect?: Prisma.PhotographerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PhotographerUpdateToOneWithWhereWithoutBookingsInput, Prisma.PhotographerUpdateWithoutBookingsInput>, Prisma.PhotographerUncheckedUpdateWithoutBookingsInput>
+}
+
+export type PhotographerCreateNestedOneWithoutGalleriesInput = {
+  create?: Prisma.XOR<Prisma.PhotographerCreateWithoutGalleriesInput, Prisma.PhotographerUncheckedCreateWithoutGalleriesInput>
+  connectOrCreate?: Prisma.PhotographerCreateOrConnectWithoutGalleriesInput
+  connect?: Prisma.PhotographerWhereUniqueInput
+}
+
+export type PhotographerUpdateOneRequiredWithoutGalleriesNestedInput = {
+  create?: Prisma.XOR<Prisma.PhotographerCreateWithoutGalleriesInput, Prisma.PhotographerUncheckedCreateWithoutGalleriesInput>
+  connectOrCreate?: Prisma.PhotographerCreateOrConnectWithoutGalleriesInput
+  upsert?: Prisma.PhotographerUpsertWithoutGalleriesInput
+  connect?: Prisma.PhotographerWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PhotographerUpdateToOneWithWhereWithoutGalleriesInput, Prisma.PhotographerUpdateWithoutGalleriesInput>, Prisma.PhotographerUncheckedUpdateWithoutGalleriesInput>
+}
+
 export type PhotographerCreateWithoutUserInput = {
   id?: string
   subdomain: string
@@ -469,9 +624,16 @@ export type PhotographerCreateWithoutUserInput = {
   phone?: string | null
   bio?: string | null
   avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  sessionTypes?: Prisma.SessionTypeCreateNestedManyWithoutPhotographerInput
+  availabilities?: Prisma.AvailabilityCreateNestedManyWithoutPhotographerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPhotographerInput
+  galleries?: Prisma.GalleryCreateNestedManyWithoutPhotographerInput
 }
 
 export type PhotographerUncheckedCreateWithoutUserInput = {
@@ -481,9 +643,16 @@ export type PhotographerUncheckedCreateWithoutUserInput = {
   phone?: string | null
   bio?: string | null
   avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  sessionTypes?: Prisma.SessionTypeUncheckedCreateNestedManyWithoutPhotographerInput
+  availabilities?: Prisma.AvailabilityUncheckedCreateNestedManyWithoutPhotographerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPhotographerInput
+  galleries?: Prisma.GalleryUncheckedCreateNestedManyWithoutPhotographerInput
 }
 
 export type PhotographerCreateOrConnectWithoutUserInput = {
@@ -509,9 +678,16 @@ export type PhotographerUpdateWithoutUserInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionTypes?: Prisma.SessionTypeUpdateManyWithoutPhotographerNestedInput
+  availabilities?: Prisma.AvailabilityUpdateManyWithoutPhotographerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPhotographerNestedInput
+  galleries?: Prisma.GalleryUpdateManyWithoutPhotographerNestedInput
 }
 
 export type PhotographerUncheckedUpdateWithoutUserInput = {
@@ -521,11 +697,442 @@ export type PhotographerUncheckedUpdateWithoutUserInput = {
   phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionTypes?: Prisma.SessionTypeUncheckedUpdateManyWithoutPhotographerNestedInput
+  availabilities?: Prisma.AvailabilityUncheckedUpdateManyWithoutPhotographerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPhotographerNestedInput
+  galleries?: Prisma.GalleryUncheckedUpdateManyWithoutPhotographerNestedInput
 }
 
+export type PhotographerCreateWithoutSessionTypesInput = {
+  id?: string
+  subdomain: string
+  businessName: string
+  phone?: string | null
+  bio?: string | null
+  avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPhotographerInput
+  availabilities?: Prisma.AvailabilityCreateNestedManyWithoutPhotographerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPhotographerInput
+  galleries?: Prisma.GalleryCreateNestedManyWithoutPhotographerInput
+}
+
+export type PhotographerUncheckedCreateWithoutSessionTypesInput = {
+  id?: string
+  userId: string
+  subdomain: string
+  businessName: string
+  phone?: string | null
+  bio?: string | null
+  avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  availabilities?: Prisma.AvailabilityUncheckedCreateNestedManyWithoutPhotographerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPhotographerInput
+  galleries?: Prisma.GalleryUncheckedCreateNestedManyWithoutPhotographerInput
+}
+
+export type PhotographerCreateOrConnectWithoutSessionTypesInput = {
+  where: Prisma.PhotographerWhereUniqueInput
+  create: Prisma.XOR<Prisma.PhotographerCreateWithoutSessionTypesInput, Prisma.PhotographerUncheckedCreateWithoutSessionTypesInput>
+}
+
+export type PhotographerUpsertWithoutSessionTypesInput = {
+  update: Prisma.XOR<Prisma.PhotographerUpdateWithoutSessionTypesInput, Prisma.PhotographerUncheckedUpdateWithoutSessionTypesInput>
+  create: Prisma.XOR<Prisma.PhotographerCreateWithoutSessionTypesInput, Prisma.PhotographerUncheckedCreateWithoutSessionTypesInput>
+  where?: Prisma.PhotographerWhereInput
+}
+
+export type PhotographerUpdateToOneWithWhereWithoutSessionTypesInput = {
+  where?: Prisma.PhotographerWhereInput
+  data: Prisma.XOR<Prisma.PhotographerUpdateWithoutSessionTypesInput, Prisma.PhotographerUncheckedUpdateWithoutSessionTypesInput>
+}
+
+export type PhotographerUpdateWithoutSessionTypesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPhotographerNestedInput
+  availabilities?: Prisma.AvailabilityUpdateManyWithoutPhotographerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPhotographerNestedInput
+  galleries?: Prisma.GalleryUpdateManyWithoutPhotographerNestedInput
+}
+
+export type PhotographerUncheckedUpdateWithoutSessionTypesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  availabilities?: Prisma.AvailabilityUncheckedUpdateManyWithoutPhotographerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPhotographerNestedInput
+  galleries?: Prisma.GalleryUncheckedUpdateManyWithoutPhotographerNestedInput
+}
+
+export type PhotographerCreateWithoutAvailabilitiesInput = {
+  id?: string
+  subdomain: string
+  businessName: string
+  phone?: string | null
+  bio?: string | null
+  avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPhotographerInput
+  sessionTypes?: Prisma.SessionTypeCreateNestedManyWithoutPhotographerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPhotographerInput
+  galleries?: Prisma.GalleryCreateNestedManyWithoutPhotographerInput
+}
+
+export type PhotographerUncheckedCreateWithoutAvailabilitiesInput = {
+  id?: string
+  userId: string
+  subdomain: string
+  businessName: string
+  phone?: string | null
+  bio?: string | null
+  avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessionTypes?: Prisma.SessionTypeUncheckedCreateNestedManyWithoutPhotographerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPhotographerInput
+  galleries?: Prisma.GalleryUncheckedCreateNestedManyWithoutPhotographerInput
+}
+
+export type PhotographerCreateOrConnectWithoutAvailabilitiesInput = {
+  where: Prisma.PhotographerWhereUniqueInput
+  create: Prisma.XOR<Prisma.PhotographerCreateWithoutAvailabilitiesInput, Prisma.PhotographerUncheckedCreateWithoutAvailabilitiesInput>
+}
+
+export type PhotographerUpsertWithoutAvailabilitiesInput = {
+  update: Prisma.XOR<Prisma.PhotographerUpdateWithoutAvailabilitiesInput, Prisma.PhotographerUncheckedUpdateWithoutAvailabilitiesInput>
+  create: Prisma.XOR<Prisma.PhotographerCreateWithoutAvailabilitiesInput, Prisma.PhotographerUncheckedCreateWithoutAvailabilitiesInput>
+  where?: Prisma.PhotographerWhereInput
+}
+
+export type PhotographerUpdateToOneWithWhereWithoutAvailabilitiesInput = {
+  where?: Prisma.PhotographerWhereInput
+  data: Prisma.XOR<Prisma.PhotographerUpdateWithoutAvailabilitiesInput, Prisma.PhotographerUncheckedUpdateWithoutAvailabilitiesInput>
+}
+
+export type PhotographerUpdateWithoutAvailabilitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPhotographerNestedInput
+  sessionTypes?: Prisma.SessionTypeUpdateManyWithoutPhotographerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPhotographerNestedInput
+  galleries?: Prisma.GalleryUpdateManyWithoutPhotographerNestedInput
+}
+
+export type PhotographerUncheckedUpdateWithoutAvailabilitiesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionTypes?: Prisma.SessionTypeUncheckedUpdateManyWithoutPhotographerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPhotographerNestedInput
+  galleries?: Prisma.GalleryUncheckedUpdateManyWithoutPhotographerNestedInput
+}
+
+export type PhotographerCreateWithoutBookingsInput = {
+  id?: string
+  subdomain: string
+  businessName: string
+  phone?: string | null
+  bio?: string | null
+  avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPhotographerInput
+  sessionTypes?: Prisma.SessionTypeCreateNestedManyWithoutPhotographerInput
+  availabilities?: Prisma.AvailabilityCreateNestedManyWithoutPhotographerInput
+  galleries?: Prisma.GalleryCreateNestedManyWithoutPhotographerInput
+}
+
+export type PhotographerUncheckedCreateWithoutBookingsInput = {
+  id?: string
+  userId: string
+  subdomain: string
+  businessName: string
+  phone?: string | null
+  bio?: string | null
+  avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessionTypes?: Prisma.SessionTypeUncheckedCreateNestedManyWithoutPhotographerInput
+  availabilities?: Prisma.AvailabilityUncheckedCreateNestedManyWithoutPhotographerInput
+  galleries?: Prisma.GalleryUncheckedCreateNestedManyWithoutPhotographerInput
+}
+
+export type PhotographerCreateOrConnectWithoutBookingsInput = {
+  where: Prisma.PhotographerWhereUniqueInput
+  create: Prisma.XOR<Prisma.PhotographerCreateWithoutBookingsInput, Prisma.PhotographerUncheckedCreateWithoutBookingsInput>
+}
+
+export type PhotographerUpsertWithoutBookingsInput = {
+  update: Prisma.XOR<Prisma.PhotographerUpdateWithoutBookingsInput, Prisma.PhotographerUncheckedUpdateWithoutBookingsInput>
+  create: Prisma.XOR<Prisma.PhotographerCreateWithoutBookingsInput, Prisma.PhotographerUncheckedCreateWithoutBookingsInput>
+  where?: Prisma.PhotographerWhereInput
+}
+
+export type PhotographerUpdateToOneWithWhereWithoutBookingsInput = {
+  where?: Prisma.PhotographerWhereInput
+  data: Prisma.XOR<Prisma.PhotographerUpdateWithoutBookingsInput, Prisma.PhotographerUncheckedUpdateWithoutBookingsInput>
+}
+
+export type PhotographerUpdateWithoutBookingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPhotographerNestedInput
+  sessionTypes?: Prisma.SessionTypeUpdateManyWithoutPhotographerNestedInput
+  availabilities?: Prisma.AvailabilityUpdateManyWithoutPhotographerNestedInput
+  galleries?: Prisma.GalleryUpdateManyWithoutPhotographerNestedInput
+}
+
+export type PhotographerUncheckedUpdateWithoutBookingsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionTypes?: Prisma.SessionTypeUncheckedUpdateManyWithoutPhotographerNestedInput
+  availabilities?: Prisma.AvailabilityUncheckedUpdateManyWithoutPhotographerNestedInput
+  galleries?: Prisma.GalleryUncheckedUpdateManyWithoutPhotographerNestedInput
+}
+
+export type PhotographerCreateWithoutGalleriesInput = {
+  id?: string
+  subdomain: string
+  businessName: string
+  phone?: string | null
+  bio?: string | null
+  avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutPhotographerInput
+  sessionTypes?: Prisma.SessionTypeCreateNestedManyWithoutPhotographerInput
+  availabilities?: Prisma.AvailabilityCreateNestedManyWithoutPhotographerInput
+  bookings?: Prisma.BookingCreateNestedManyWithoutPhotographerInput
+}
+
+export type PhotographerUncheckedCreateWithoutGalleriesInput = {
+  id?: string
+  userId: string
+  subdomain: string
+  businessName: string
+  phone?: string | null
+  bio?: string | null
+  avatarUrl?: string | null
+  coverUrl?: string | null
+  logoUrl?: string | null
+  primaryColor?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessionTypes?: Prisma.SessionTypeUncheckedCreateNestedManyWithoutPhotographerInput
+  availabilities?: Prisma.AvailabilityUncheckedCreateNestedManyWithoutPhotographerInput
+  bookings?: Prisma.BookingUncheckedCreateNestedManyWithoutPhotographerInput
+}
+
+export type PhotographerCreateOrConnectWithoutGalleriesInput = {
+  where: Prisma.PhotographerWhereUniqueInput
+  create: Prisma.XOR<Prisma.PhotographerCreateWithoutGalleriesInput, Prisma.PhotographerUncheckedCreateWithoutGalleriesInput>
+}
+
+export type PhotographerUpsertWithoutGalleriesInput = {
+  update: Prisma.XOR<Prisma.PhotographerUpdateWithoutGalleriesInput, Prisma.PhotographerUncheckedUpdateWithoutGalleriesInput>
+  create: Prisma.XOR<Prisma.PhotographerCreateWithoutGalleriesInput, Prisma.PhotographerUncheckedCreateWithoutGalleriesInput>
+  where?: Prisma.PhotographerWhereInput
+}
+
+export type PhotographerUpdateToOneWithWhereWithoutGalleriesInput = {
+  where?: Prisma.PhotographerWhereInput
+  data: Prisma.XOR<Prisma.PhotographerUpdateWithoutGalleriesInput, Prisma.PhotographerUncheckedUpdateWithoutGalleriesInput>
+}
+
+export type PhotographerUpdateWithoutGalleriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutPhotographerNestedInput
+  sessionTypes?: Prisma.SessionTypeUpdateManyWithoutPhotographerNestedInput
+  availabilities?: Prisma.AvailabilityUpdateManyWithoutPhotographerNestedInput
+  bookings?: Prisma.BookingUpdateManyWithoutPhotographerNestedInput
+}
+
+export type PhotographerUncheckedUpdateWithoutGalleriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  subdomain?: Prisma.StringFieldUpdateOperationsInput | string
+  businessName?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  logoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  primaryColor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessionTypes?: Prisma.SessionTypeUncheckedUpdateManyWithoutPhotographerNestedInput
+  availabilities?: Prisma.AvailabilityUncheckedUpdateManyWithoutPhotographerNestedInput
+  bookings?: Prisma.BookingUncheckedUpdateManyWithoutPhotographerNestedInput
+}
+
+
+/**
+ * Count Type PhotographerCountOutputType
+ */
+
+export type PhotographerCountOutputType = {
+  sessionTypes: number
+  availabilities: number
+  bookings: number
+  galleries: number
+}
+
+export type PhotographerCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  sessionTypes?: boolean | PhotographerCountOutputTypeCountSessionTypesArgs
+  availabilities?: boolean | PhotographerCountOutputTypeCountAvailabilitiesArgs
+  bookings?: boolean | PhotographerCountOutputTypeCountBookingsArgs
+  galleries?: boolean | PhotographerCountOutputTypeCountGalleriesArgs
+}
+
+/**
+ * PhotographerCountOutputType without action
+ */
+export type PhotographerCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PhotographerCountOutputType
+   */
+  select?: Prisma.PhotographerCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PhotographerCountOutputType without action
+ */
+export type PhotographerCountOutputTypeCountSessionTypesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SessionTypeWhereInput
+}
+
+/**
+ * PhotographerCountOutputType without action
+ */
+export type PhotographerCountOutputTypeCountAvailabilitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AvailabilityWhereInput
+}
+
+/**
+ * PhotographerCountOutputType without action
+ */
+export type PhotographerCountOutputTypeCountBookingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BookingWhereInput
+}
+
+/**
+ * PhotographerCountOutputType without action
+ */
+export type PhotographerCountOutputTypeCountGalleriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GalleryWhereInput
+}
 
 
 export type PhotographerSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -536,10 +1143,18 @@ export type PhotographerSelect<ExtArgs extends runtime.Types.Extensions.Internal
   phone?: boolean
   bio?: boolean
   avatarUrl?: boolean
+  coverUrl?: boolean
+  logoUrl?: boolean
+  primaryColor?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  sessionTypes?: boolean | Prisma.Photographer$sessionTypesArgs<ExtArgs>
+  availabilities?: boolean | Prisma.Photographer$availabilitiesArgs<ExtArgs>
+  bookings?: boolean | Prisma.Photographer$bookingsArgs<ExtArgs>
+  galleries?: boolean | Prisma.Photographer$galleriesArgs<ExtArgs>
+  _count?: boolean | Prisma.PhotographerCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["photographer"]>
 
 export type PhotographerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -550,6 +1165,9 @@ export type PhotographerSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   phone?: boolean
   bio?: boolean
   avatarUrl?: boolean
+  coverUrl?: boolean
+  logoUrl?: boolean
+  primaryColor?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -564,6 +1182,9 @@ export type PhotographerSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   phone?: boolean
   bio?: boolean
   avatarUrl?: boolean
+  coverUrl?: boolean
+  logoUrl?: boolean
+  primaryColor?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -578,14 +1199,22 @@ export type PhotographerSelectScalar = {
   phone?: boolean
   bio?: boolean
   avatarUrl?: boolean
+  coverUrl?: boolean
+  logoUrl?: boolean
+  primaryColor?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type PhotographerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "subdomain" | "businessName" | "phone" | "bio" | "avatarUrl" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["photographer"]>
+export type PhotographerOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "subdomain" | "businessName" | "phone" | "bio" | "avatarUrl" | "coverUrl" | "logoUrl" | "primaryColor" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["photographer"]>
 export type PhotographerInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  sessionTypes?: boolean | Prisma.Photographer$sessionTypesArgs<ExtArgs>
+  availabilities?: boolean | Prisma.Photographer$availabilitiesArgs<ExtArgs>
+  bookings?: boolean | Prisma.Photographer$bookingsArgs<ExtArgs>
+  galleries?: boolean | Prisma.Photographer$galleriesArgs<ExtArgs>
+  _count?: boolean | Prisma.PhotographerCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PhotographerIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -598,6 +1227,10 @@ export type $PhotographerPayload<ExtArgs extends runtime.Types.Extensions.Intern
   name: "Photographer"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
+    sessionTypes: Prisma.$SessionTypePayload<ExtArgs>[]
+    availabilities: Prisma.$AvailabilityPayload<ExtArgs>[]
+    bookings: Prisma.$BookingPayload<ExtArgs>[]
+    galleries: Prisma.$GalleryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -607,6 +1240,9 @@ export type $PhotographerPayload<ExtArgs extends runtime.Types.Extensions.Intern
     phone: string | null
     bio: string | null
     avatarUrl: string | null
+    coverUrl: string | null
+    logoUrl: string | null
+    primaryColor: string | null
     isActive: boolean
     createdAt: Date
     updatedAt: Date
@@ -1005,6 +1641,10 @@ readonly fields: PhotographerFieldRefs;
 export interface Prisma__PhotographerClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  sessionTypes<T extends Prisma.Photographer$sessionTypesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Photographer$sessionTypesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SessionTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  availabilities<T extends Prisma.Photographer$availabilitiesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Photographer$availabilitiesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AvailabilityPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  bookings<T extends Prisma.Photographer$bookingsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Photographer$bookingsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  galleries<T extends Prisma.Photographer$galleriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Photographer$galleriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GalleryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1041,6 +1681,9 @@ export interface PhotographerFieldRefs {
   readonly phone: Prisma.FieldRef<"Photographer", 'String'>
   readonly bio: Prisma.FieldRef<"Photographer", 'String'>
   readonly avatarUrl: Prisma.FieldRef<"Photographer", 'String'>
+  readonly coverUrl: Prisma.FieldRef<"Photographer", 'String'>
+  readonly logoUrl: Prisma.FieldRef<"Photographer", 'String'>
+  readonly primaryColor: Prisma.FieldRef<"Photographer", 'String'>
   readonly isActive: Prisma.FieldRef<"Photographer", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Photographer", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Photographer", 'DateTime'>
@@ -1437,6 +2080,102 @@ export type PhotographerDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Limit how many Photographers to delete.
    */
   limit?: number
+}
+
+/**
+ * Photographer.sessionTypes
+ */
+export type Photographer$sessionTypesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SessionType
+   */
+  select?: Prisma.SessionTypeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SessionType
+   */
+  omit?: Prisma.SessionTypeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SessionTypeInclude<ExtArgs> | null
+  where?: Prisma.SessionTypeWhereInput
+  orderBy?: Prisma.SessionTypeOrderByWithRelationInput | Prisma.SessionTypeOrderByWithRelationInput[]
+  cursor?: Prisma.SessionTypeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SessionTypeScalarFieldEnum | Prisma.SessionTypeScalarFieldEnum[]
+}
+
+/**
+ * Photographer.availabilities
+ */
+export type Photographer$availabilitiesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Availability
+   */
+  select?: Prisma.AvailabilitySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Availability
+   */
+  omit?: Prisma.AvailabilityOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AvailabilityInclude<ExtArgs> | null
+  where?: Prisma.AvailabilityWhereInput
+  orderBy?: Prisma.AvailabilityOrderByWithRelationInput | Prisma.AvailabilityOrderByWithRelationInput[]
+  cursor?: Prisma.AvailabilityWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AvailabilityScalarFieldEnum | Prisma.AvailabilityScalarFieldEnum[]
+}
+
+/**
+ * Photographer.bookings
+ */
+export type Photographer$bookingsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Booking
+   */
+  select?: Prisma.BookingSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Booking
+   */
+  omit?: Prisma.BookingOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BookingInclude<ExtArgs> | null
+  where?: Prisma.BookingWhereInput
+  orderBy?: Prisma.BookingOrderByWithRelationInput | Prisma.BookingOrderByWithRelationInput[]
+  cursor?: Prisma.BookingWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BookingScalarFieldEnum | Prisma.BookingScalarFieldEnum[]
+}
+
+/**
+ * Photographer.galleries
+ */
+export type Photographer$galleriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Gallery
+   */
+  select?: Prisma.GallerySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Gallery
+   */
+  omit?: Prisma.GalleryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GalleryInclude<ExtArgs> | null
+  where?: Prisma.GalleryWhereInput
+  orderBy?: Prisma.GalleryOrderByWithRelationInput | Prisma.GalleryOrderByWithRelationInput[]
+  cursor?: Prisma.GalleryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GalleryScalarFieldEnum | Prisma.GalleryScalarFieldEnum[]
 }
 
 /**
