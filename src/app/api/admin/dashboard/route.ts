@@ -20,8 +20,16 @@ export async function GET(request: Request) {
         const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
         const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
 
-        // Get stats
-        const [pendingSessions, confirmedSessions, monthlyPayments, totalGalleries] = await Promise.all([
+        // Get all stats in parallel
+        const [
+            pendingSessions,
+            confirmedSessions,
+            completedSessions,
+            monthlyPayments,
+            totalGalleries,
+            totalPhotos,
+            totalSessionTypes,
+        ] = await Promise.all([
             prisma.booking.count({
                 where: {
                     photographerId,
@@ -33,6 +41,12 @@ export async function GET(request: Request) {
                     photographerId,
                     status: 'CONFIRMED',
                     date: { gte: now },
+                },
+            }),
+            prisma.booking.count({
+                where: {
+                    photographerId,
+                    status: 'COMPLETED',
                 },
             }),
             prisma.payment.aggregate({
@@ -48,6 +62,12 @@ export async function GET(request: Request) {
             }),
             prisma.gallery.count({
                 where: { photographerId },
+            }),
+            prisma.photo.count({
+                where: { gallery: { photographerId } },
+            }),
+            prisma.sessionType.count({
+                where: { photographerId, isActive: true },
             }),
         ]);
 
@@ -69,8 +89,12 @@ export async function GET(request: Request) {
             stats: {
                 pendingSessions,
                 confirmedSessions,
+                completedSessions,
                 monthlyRevenue: Number(monthlyPayments._sum.amount || 0),
                 totalGalleries,
+                activeGalleries: totalGalleries, // Could add isPublic filter
+                totalPhotos,
+                totalSessionTypes,
             },
             upcomingSessions: upcomingSessions.map(s => ({
                 id: s.id,
