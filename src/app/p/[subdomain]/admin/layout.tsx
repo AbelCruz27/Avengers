@@ -16,7 +16,7 @@ const menuItems = [
     { href: '/sesiones', icon: '📅', label: 'Sesiones' },
     { href: '/calendario', icon: '🗓️', label: 'Calendario' },
     { href: '/galerias', icon: '🖼️', label: 'Galerías' },
-    { href: '/subir-fotos', icon: '📤', label: 'Subir Fotos' },
+    { href: '/tipos-sesion', icon: '📷', label: 'Tipos de Sesión' },
     { href: '/disponibilidad', icon: '⏰', label: 'Disponibilidad' },
     { href: '/configuracion', icon: '⚙️', label: 'Configuración' },
     { href: '/pagos', icon: '💰', label: 'Pagos' },
@@ -62,8 +62,8 @@ function AdminLayoutContent({ children, params }: AdminLayoutProps) {
                                     key={item.href}
                                     href={href}
                                     className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isActive
-                                            ? 'bg-purple-600 text-white'
-                                            : 'text-gray-400 hover:bg-gray-700/50 hover:text-white'
+                                        ? 'bg-purple-600 text-white'
+                                        : 'text-gray-400 hover:bg-gray-700/50 hover:text-white'
                                         }`}
                                 >
                                     <span className="text-xl">{item.icon}</span>
